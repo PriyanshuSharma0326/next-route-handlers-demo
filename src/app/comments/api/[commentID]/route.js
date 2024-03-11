@@ -13,6 +13,6 @@ export async function DELETE(_request, { params }) {
     const commentIndex = comments.findIndex(item => item.id == params.commentID);
     const deletedComment = comments[commentIndex];
     comments.splice(commentIndex, 1);
-    
+
     return Response.json(deletedComment);
 }

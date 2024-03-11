@@ -1,7 +1,10 @@
 import comments from "../data";
 
-export async function GET() {
-    return Response.json(comments);
+export async function GET(request) {
+    const url = new URL(request.url);
+    const query = url.searchParams.get("query");
+
+    return Response.json(query ? comments.filter(item => item.message.includes(query)) : comments);
 }
 
 export async function POST(request) {
