@@ -1,4 +1,16 @@
+import { redirect } from "next/navigation";
 import comments from "../../data";
+
+export async function GET(_request, { params }) {
+    const filteredComment = comments.filter(item => item.id == params.commentID);
+
+    if(filteredComment.length) {
+        return Response.json(filteredComment);
+    }
+    else {
+        redirect('/comments/api');
+    }
+}
 
 export async function PATCH(request, { params }) {
     const { message } = await request.json();
