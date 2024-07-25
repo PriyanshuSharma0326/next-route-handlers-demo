@@ -8,6 +8,7 @@ export async function GET(_request) {
     return new Response('<h1>Profile Data</h1>', {
         headers: {
             'Content-Type': 'text/html',
+            'Set-Cookie': 'theme=dark',
         }
     });
 }
